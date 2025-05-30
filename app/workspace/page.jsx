@@ -1,13 +1,14 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, Suspense } from 'react';
 import VideoList from './_components/VideoList';
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import { useMutation } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 
-function Workspace() {
+// Main content component that uses searchParams
+function WorkspaceContent() {
   const searchParams = useSearchParams();
   const generatedVideoId = searchParams.get('generatedVideoId');
   const videoDataRecordId = searchParams.get('videoDataRecordId');
@@ -146,4 +147,11 @@ function Workspace() {
   );
 }
 
-export default Workspace;
+// Outer component that provides Suspense boundary
+export default function Workspace() {
+  return (
+    <Suspense fallback={<div className="text-center p-8">Loading workspace...</div>}>
+      <WorkspaceContent />
+    </Suspense>
+  );
+}
