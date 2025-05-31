@@ -1,8 +1,7 @@
-import React from 'react';
+import React from "react";
 
 import { Composition } from "remotion";
 import { MyComposition } from "./Composition";
-
 
 export const RemotionRoot = () => {
   return (
@@ -12,17 +11,16 @@ export const RemotionRoot = () => {
           key={`Design${designId}`}
           id={`Design${designId}`}
           component={MyComposition}
-          
           durationInFrames={480}
           fps={30}
           width={720}
           height={1280}
           defaultProps={{
-            videoInfo: {  
+            videoInfo: {
               videoUrl: "",
               assets: [],
-              adNumber: designId
-            }
+              adNumber: designId,
+            },
           }}
         />
       ))}

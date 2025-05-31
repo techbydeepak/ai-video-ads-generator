@@ -19,9 +19,9 @@ const errorStyle = {
   textAlign: "center",
 };
 
-export const MyComposition = ( {videoInfo} ) => {
-   console.log("ALL PROPS:", videoInfo);
-    //  const videoInfo = props.videoInfo || props;
+export const MyComposition =  ({ videoInfo = {} }) => {
+     console.log("Received videoInfo:", videoInfo);
+    
 
 
   if (!videoInfo?.videoUrl) {
