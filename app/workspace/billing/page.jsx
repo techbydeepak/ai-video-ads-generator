@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { userDetailContext } from "@/context/UserDetailContext";
+
 import { useMutation } from "convex/react";
 import { CircleDollarSign } from "lucide-react";
 import React, { useContext } from "react";
@@ -17,7 +18,7 @@ export const creditsPlans = [
 ];
 
 function Billing() {
-  const { userDetail, setUserDetail } = useContext(userDetailContext);
+  const { userDetail } = useContext(userDetailContext);
 
   const updateUserCredits = useMutation(api.users.updateUserCredits);
   if (!userDetail) {

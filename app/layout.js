@@ -14,13 +14,10 @@ const outfit = Outfit({ subsets: ['latin'] });
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider
-      signInUrl="/sign-in"
-      signUpUrl="/sign-up"
-       fallbackRedirectUrl="/"
-       forceRedirectUrl="/"
+    <>
       
-    >
+      
+    
       <html lang="en">
         <body className={outfit.className}>
           <Provider>
@@ -29,6 +26,6 @@ export default function RootLayout({ children }) {
           </Provider>
         </body>
       </html>
-    </ClerkProvider>
+    </>
   );
 }

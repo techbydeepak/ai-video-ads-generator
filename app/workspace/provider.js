@@ -1,45 +1,45 @@
-"use client"
-import {api} from '@/convex/_generated/api'
-import {useMutation} from 'convex/react'
-import { useUser } from '@clerk/nextjs'
-import React, { useEffect, useState } from 'react'
-import { userDetailContext } from '@/context/UserDetailContext'
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
-import AppSidebar from './_components/AppSidebar'
+"use client";
+import { api } from '@/convex/_generated/api';
+import { useMutation } from 'convex/react';
+import { useUser } from '@clerk/nextjs';
+import { useEffect, useState } from 'react';
+import { userDetailContext } from '@/context/UserDetailContext'; // Fixed import
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import AppSidebar from './_components/AppSidebar';
 
-function WorkspaceProvider({children}) {
-    const newUserMutation=useMutation(api.users.CreateNewUser)
-    const {user} = useUser()
-    const [userDetail,setUserDetail] = useState()
-    useEffect(() => {
-        if (user) {
-          CreateNewUser();
-        }
-      }, [user]);
-      
-    const CreateNewUser= async () =>{
+export default function WorkspaceProvider({ children }) {
+  const newUserMutation = useMutation(api.users.CreateNewUser);
+  const { user } = useUser();
+  const [userDetail, setUserDetail] = useState(null);
 
-        const result = await newUserMutation({
-
-            name:user?.fullName,
-            email:user?.primaryEmailAddress?.emailAddress,
-            picture:user?.imageUrl
-        })
-        console.log(result);
-        setUserDetail(result)
-        
+  useEffect(() => {
+    if (user) {
+      createNewUser();
     }
-  return (
-   
-      <userDetailContext.Provider value={{userDetail, setUserDetail}}>
-      <SidebarProvider>
-        <AppSidebar/>
-      <div className='w-full p-10'>  <SidebarTrigger/> {children} </div>
-      </SidebarProvider>
-      </userDetailContext.Provider>
-      
-   
-  )
-}
+  }, [user]);
 
-export default WorkspaceProvider
+  const createNewUser = async () => {
+    try {
+      const result = await newUserMutation({
+        name: user?.fullName,
+        email: user?.primaryEmailAddress?.emailAddress,
+        picture: user?.imageUrl
+      });
+      setUserDetail(result);
+    } catch (error) {
+      console.error("Error creating user:", error);
+    }
+  }
+
+  return (
+    <userDetailContext.Provider value={{ userDetail, setUserDetail }}>
+      <SidebarProvider>
+        <AppSidebar />
+        <div className='w-full p-10'>
+          <SidebarTrigger />
+          {children}
+        </div>
+      </SidebarProvider>
+    </userDetailContext.Provider>
+  );
+}

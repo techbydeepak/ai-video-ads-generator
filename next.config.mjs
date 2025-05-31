@@ -8,35 +8,34 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'static.website-files.org',
+        hostname: 'static.website-files.org', 
       },
       {
         protocol: 'https',
         hostname: 'ik.imagekit.io',
       },
-      // Add any other domains you need
     ],
-    // Optional: Add these for better caching
+    // Added deviceSizes for better responsive images
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     minimumCacheTTL: 60,
     formats: ['image/webp'],
   },
   
-  // For Convex and other dependencies
+  // Updated experimental config
   experimental: {
-    serverComponentsExternalPackages: ['axios', 'convex'],
+    serverExternalPackages: ['axios', 'convex', '@clerk/nextjs'],
+    optimizePackageImports: ['@clerk/nextjs'], // Optional optimization
+    ppr: false,
   },
   
   webpack: (config) => {
-    // Ignore .d.ts files
     config.module.rules.push({
       test: /\.d\.ts$/,
       use: 'ignore-loader',
     });
-    
     return config;
   },
   
-  // Recommended for Vercel deployments
   output: 'standalone',
 };
 
