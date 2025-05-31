@@ -17,7 +17,7 @@ export const RemotionRoot = () => {
           height={1280}
           defaultProps={{
             videoInfo: {
-              videoUrl: " https://www.w3schools.com/html/mov_bbb.mp4",
+              videoUrl: "",
               assets: [],
               adNumber: designId,
             },
