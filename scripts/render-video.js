@@ -2,7 +2,7 @@ const { bundle } = require("@remotion/bundler");
 const { getCompositions, renderMedia } = require("@remotion/renderer");
 const path = require("path");
 const { ConvexHttpClient } = require("convex/browser");
-// require("dotenv").config({ path: ".env.local" });
+require("dotenv").config({ path: ".env.local" });
 const fs = require("fs");
 
 async function renderVideo(videoId, designNumber) {
