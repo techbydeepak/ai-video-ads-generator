@@ -60,7 +60,7 @@ async function renderVideo(videoId, designNumber) {
     }
 
     // ✅ Step 7: Prepare Output Directory
-    const rendersDir = path.join(process.cwd(), "public/renders");
+    const rendersDir = path.join(process.cwd(), "/tmp", "renders");
     if (!fs.existsSync(rendersDir)) {
       fs.mkdirSync(rendersDir, { recursive: true });
     }
