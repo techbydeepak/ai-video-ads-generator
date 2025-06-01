@@ -8,13 +8,12 @@ const fs = require("fs");
 async function renderVideo(videoId, designNumber) {
   try {
     // ✅ Step 1: Initialize Convex
-    try {
-    // ✅ Step 1: Initialize Convex
-    const CONVEX_URL = process.env.NEXT_PUBLIC_CONVEX_URL || process.env.CONVEX_SITE_URL;
-if (!CONVEX_URL) {
-  throw new Error("NEXT_PUBLIC_CONVEX_URL is not defined");
-}
-const convex = new ConvexHttpClient(CONVEX_URL);
+    const CONVEX_URL =
+      process.env.NEXT_PUBLIC_CONVEX_URL || process.env.CONVEX_SITE_URL;
+    if (!CONVEX_URL) {
+      throw new Error("NEXT_PUBLIC_CONVEX_URL is not defined");
+    }
+    const convex = new ConvexHttpClient(CONVEX_URL);
 
     // ✅ Step 2: Fetch Video Data
     console.log(`📦 Fetching video data for ID: ${videoId}`);
@@ -36,8 +35,6 @@ const convex = new ConvexHttpClient(CONVEX_URL);
     if (!videoData.videoUrl) {
       throw new Error("Missing videoUrl in video data");
     }
-
-  
 
     // ✅ Step 5: Bundle the Remotion Project
     console.log("📦 Bundling Remotion project...");
@@ -68,14 +65,11 @@ const convex = new ConvexHttpClient(CONVEX_URL);
     const outputPath = path.join(rendersDir, `${videoId}_${designNumber}.mp4`);
 
     // ✅ Step 8: Render the Video
-    const 
-      videoInfo = {
-        videoUrl: videoData.videoUrl,
-    assets: videoData.assets,
-    adNumber: designNumber,
-        
-      }
-    
+    const videoInfo = {
+      videoUrl: videoData.videoUrl,
+      assets: videoData.assets,
+      adNumber: designNumber,
+    };
 
     console.log("🎬 Starting video render with props:", {
       videoUrl: videoData.videoUrl,
@@ -88,9 +82,9 @@ const convex = new ConvexHttpClient(CONVEX_URL);
       serveUrl: bundleLocation,
       codec: "h264",
       outputLocation: outputPath,
-      
-     inputProps: { videoInfo },
-  
+
+      inputProps: { videoInfo },
+
       enforceAudioTrack: true,
       muted: false,
       everyNthFrame: 1,
