@@ -8,12 +8,13 @@ const fs = require("fs");
 async function renderVideo(videoId, designNumber) {
   try {
     // ✅ Step 1: Initialize Convex
-    if (!process.env.NEXT_PUBLIC_CONVEX_URL) {
-      throw new Error(
-        "Missing NEXT_PUBLIC_CONVEX_URL in environment variables"
-      );
-    }
-    const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL);
+    try {
+    // ✅ Step 1: Initialize Convex
+    const CONVEX_URL = process.env.NEXT_PUBLIC_CONVEX_URL || process.env.CONVEX_SITE_URL;
+if (!CONVEX_URL) {
+  throw new Error("NEXT_PUBLIC_CONVEX_URL is not defined");
+}
+const convex = new ConvexHttpClient(CONVEX_URL);
 
     // ✅ Step 2: Fetch Video Data
     console.log(`📦 Fetching video data for ID: ${videoId}`);
