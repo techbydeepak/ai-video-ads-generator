@@ -15,7 +15,7 @@ export async function POST(req){
 
    const PROMPT=GENERATE_SCRIPT_PROMPT.replace('{topic}',  topic)
   const completion = await openai.chat.completions.create({
-    model: "deepseek/deepseek-chat-v3-0324:free",
+    model: "deepseek/deepseek-chat",
     messages: [
       { role: "user", content: PROMPT }
     ],
