@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AI Video Ads Generator
 
-## Getting Started
+An AI-powered video ads generator built with Next.js that helps users create marketing-ready ad content with a smooth, reel-style interface.
 
-First, run the development server:
+## 🚀 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or ||
-bun dev
-```
+👉 https://ai-video-ads-generator-delta.vercel.app/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📌 About the Project
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+AI Video Ads Generator is a full-stack web application designed to simplify the process of creating video advertising content.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Users can create AI-generated ad scripts, captions, and marketing content through an intuitive reel-style interface. The application also provides secure user authentication and project-based access so that each user's creations and saved drafts remain private and organized.
 
-## Learn More
+## ✨ Features
 
-To learn more about Next.js, take a look at the following resources:
+- 🤖 AI-powered ad script and caption generation
+- 🎬 Reel-style video/ad creation interface
+- 🔐 Secure user authentication
+- 👤 User-specific project access
+- 💾 Save and manage ad drafts
+- 🖼️ Image upload and media management
+- 📱 Responsive UI
+- ⚡ Fast and smooth Next.js experience
+- 🌐 Production deployment on Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Frontend:** Next.js, React.js
+- **Backend:** Next.js / Node.js
+- **Database:** Convex DB
+- **Authentication:** OAuth
+- **AI:** OpenRouter API
+- **Media Management:** ImageKit
+- **Deployment:** Vercel
 
-## Deploy on Vercel
+## 📂 Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+ai-video-ads-generator/
+├── app/
+│   ├── api/
+│   ├── dashboard/
+│   ├── create-ad/
+│   └── ...
+├── components/
+├── convex/
+├── public/
+├── lib/
+├── package.json
+└── README.md
